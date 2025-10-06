@@ -3,13 +3,12 @@ package kr.co.sinamu.gallery.cart.entity;
 import jakarta.persistence.*;
 import kr.co.sinamu.gallery.cart.dto.CartRead;
 import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
+@Entity
 @Table(name = "carts")
 public class Cart {
 

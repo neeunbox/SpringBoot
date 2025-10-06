@@ -36,7 +36,7 @@ public class CartController {
         List<Integer> itemIds = carts.stream().map(CartRead::getItemId).toList();
         List<ItemRead> items = itemService.findAll(itemIds);
 
-        return new ResponseEntity<>(carts, HttpStatus.OK);
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
 
 
@@ -54,7 +54,7 @@ public class CartController {
             cartService.save(cartReq.toEntity(memberId));
         }
 
-        return new ResponseEntity<>(cart, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
@@ -63,7 +63,7 @@ public class CartController {
         // 로그인 회원 아이디
         Integer memberId = accountHelper.getMemberId(req);
 
-        cartService.remove(itemId, memberId);
+        cartService.remove(memberId, itemId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
