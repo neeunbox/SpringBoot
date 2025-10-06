@@ -1,3 +1,0 @@
-fetch("v1/api/account/login", {
-
-}).then(res => console.log(res.status));
