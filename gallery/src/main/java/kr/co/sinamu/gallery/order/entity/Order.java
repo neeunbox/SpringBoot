@@ -1,6 +1,7 @@
 package kr.co.sinamu.gallery.order.entity;
 
 import jakarta.persistence.*;
+import kr.co.sinamu.gallery.order.dto.OrderRead;
 import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -47,6 +48,18 @@ public class Order {
         this.payment = payment;
         this.cardNumber = cardNumber;
         this.amount = amount;
+    }
+
+    // 주문 조회 DTO로 변환
+    public OrderRead toRead() {
+        return OrderRead.builder()
+                .id(id)
+                .name(name)
+                .address(address)
+                .payment(payment)
+                .amount(amount)
+                .created(created)
+                .build();
     }
 
 }
