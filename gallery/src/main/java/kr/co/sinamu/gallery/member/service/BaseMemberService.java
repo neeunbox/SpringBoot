@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class BaseMemberService implements MemberService {
+public class    BaseMemberService implements MemberService {
 
     private final MemberRepository memberRepository;
 
