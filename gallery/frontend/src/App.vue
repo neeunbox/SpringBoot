@@ -3,14 +3,14 @@ import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import {useAccountStore} from "@/stores/account";
 import {watch} from "vue";
-import {useRoute} from "vue-router";
+import {useRouter} from "vue-router";
 import {check} from "@/services/accountService";
 
 // 계정 스토어
 const accountStore = useAccountStore();
 
 // 라우트 객체
-const route = useRoute();
+const router = useRouter();
 
 // 로그인 여부 확인
 const checkAccount = async () => {
@@ -30,7 +30,7 @@ const checkAccount = async () => {
 })();
 
 // 라우트 경로가 바뀔 때마다 로그인 여부를 확인
-watch(() => route.path,  () => {
+watch(() => router.currentRoute.value.path,  () => {
   checkAccount();
 });
 </script>
