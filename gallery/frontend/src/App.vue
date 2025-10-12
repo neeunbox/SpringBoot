@@ -35,7 +35,7 @@ watch(() => route.path,  () => {
 });
 </script>
 
-<template>/>
+<template>
   <!-- 로그인 체크 여부 확인 후 출력 -->
   <template v-if="accountStore.checked">
     <Header/>
