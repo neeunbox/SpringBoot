@@ -1,7 +1,19 @@
 <script setup>
-import {computed, onMounted} from "vue";
+import {addItem} from "@/services/CartService";
+import {useRouter} from "vue-router";
+import {computed} from "vue";
+
+/**
+ * @typedef {Object} Item
+ * @property {number} id
+ * @property {string} imgPath
+ * @property {string} name
+ * @property {number} price
+ * @property {number} discountPer
+ */
 
 // 프로퍼티 객체
+/** @type {{item: Item}} */
 const props = defineProps({
   item: {
     type: Object,
@@ -9,23 +21,22 @@ const props = defineProps({
   }
 });
 
-
-// 체크
-onMounted(() => {
-  console.log('Card received item:', props.item);
-});
-
-
 // 상품 할인가
 const computedItemDiscountPrice = computed(() => {
   return (props.item.price - (props.item.price * props.item.discountPer / 100)).toLocaleString() + '원';
 });
 
+// 라우터 객체
+const router = useRouter();
+
 // 장바구니 상품 담기
 const put = async() => {
-  window.alert("준비 중입니다.");
-};
+  const res = await addItem(props.item.id);
 
+  if (res.status === 200 && window.confirm("장바구니에 상품을 담았습니다. 장바구니로 이동하시겠습니까?")) {
+    await router.push("/cart");
+  }
+};
 </script>
 
 <template>
