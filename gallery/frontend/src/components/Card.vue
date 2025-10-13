@@ -3,21 +3,14 @@ import {addItem} from "@/services/CartService";
 import {useRouter} from "vue-router";
 import {computed} from "vue";
 
-/**
- * @typedef {Object} Item
- * @property {number} id
- * @property {string} imgPath
- * @property {string} name
- * @property {number} price
- * @property {number} discountPer
- */
 
-// 프로퍼티 객체
-/** @type {{item: Item}} */
 const props = defineProps({
   item: {
-    type: Object,
-    required: true
+    id: Number,
+    imagePath: String,
+    name: String,
+    price: Number,
+    discountPer: Number,
   }
 });
 
