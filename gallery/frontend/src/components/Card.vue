@@ -1,5 +1,5 @@
 <script setup>
-import {addItem} from "@/services/CartService";
+import {addItem} from "@/services/cartService.js";
 import {useRouter} from "vue-router";
 import {computed} from "vue";
 
@@ -7,7 +7,7 @@ import {computed} from "vue";
 const props = defineProps({
   item: {
     id: Number,
-    imagePath: String,
+    imgPath: String,
     name: String,
     price: Number,
     discountPer: Number,
