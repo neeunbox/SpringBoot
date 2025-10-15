@@ -15,6 +15,7 @@ const state = reactive({
     address: "",
     payment: "card",
     cardNumber: "",
+    ItemIds: [],
   }
 });
 
@@ -34,11 +35,11 @@ const submit = async () => {
     state.form.cardNumber = "";
   }
 
-  state.form.ItemIds = state.form.map(i => i.id);
+  state.form.ItemIds = state.items.map(i => i.id);
   const res = await addOrder(state.form);
 
   if (res.status === 200) {
-    const message = ["주문 완되었습니다."];
+    const message = ["주문 완료되었습니다."];
 
     if (state.form.payment === "bank") {
       const price = computedTotalPrice.value.toLocaleString();
