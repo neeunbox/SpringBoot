@@ -34,7 +34,7 @@ const logoutAccount = async () => {
             </template>
             <template v-else>
               <a @click="logoutAccount()">로그아웃</a>
-              <router-link to="/order">주문 내역</router-link>
+              <router-link to="/orders">주문 내역</router-link>
               <router-link to="/cart">장바구니</router-link>
             </template>
           </div>
