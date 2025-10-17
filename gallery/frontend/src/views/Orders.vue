@@ -44,7 +44,7 @@ const load = async () => {
           <td>{{ o.amount.toLocaleString()  }}원</td>
           <td>{{ o.created.toLocaleString() }}</td>
           <td>
-            <router-link to="`/orders/${o.id}`">자세히 보기</router-link>
+            <router-link :to="`/orders/${o.id}`">자세히 보기</router-link>
           </td>
         </tr>
         </tbody>
