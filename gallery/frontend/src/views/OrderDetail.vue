@@ -1,10 +1,10 @@
 <script setup>
 import {reactive} from "vue";
 import {getOrder} from "@/services/orderService";
-import {useRouter} from "vue-router";
+import {useRoute} from "vue-router";
 
 // 라우트 객체
-const router = useRouter();
+const route = useRoute();
 
 // 반응형 상태
 const state = reactive({
@@ -20,7 +20,7 @@ const state = reactive({
 });
 
 (async function onCreated() {
-  const id = router.params.id;
+  const id = route.params.id;
   const res = await getOrder(id);
 
   if (res.status === 200) {
@@ -67,7 +67,7 @@ const state = reactive({
           </table>
         </div>
         <div class="items col-lg-4">
-          <div>
+          <div class="h5 mb-4">
             <b>주문 상품</b>
           </div>
           <table class="table table-bordered">
