@@ -1,5 +1,6 @@
 import httpRequester from "@/libs/httpRequester";
 
+
 // 회원가입
 export const join = (args) => {
     return httpRequester.post("/v1/api/account/join", args).catch(e => e.response);
