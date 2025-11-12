@@ -42,7 +42,7 @@ public class SessionAccountHelper implements AccountHelper {
     @Override
     public Integer getMemberId(HttpServletRequest req) {
 
-        Object memberId = HttpUtils.getSession(req, AccountConstants.MEMBER_ID_NAME);
+        Object memberId = HttpUtils.getSessionValue(req, AccountConstants.MEMBER_ID_NAME);
 
         if (memberId != null) {
             return (int) memberId;

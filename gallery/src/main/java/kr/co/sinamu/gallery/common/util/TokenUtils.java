@@ -40,14 +40,14 @@ public class TokenUtils {
         claims.put(name, value);
 
         // 토큰 발급
-        JwtBuilder jwtBuilder = Jwts.builder()
+        JwtBuilder builder = Jwts.builder()
                 .setHeaderParams(headerMap)
                 .setSubject(subject)
                 .setExpiration(expTime)
                 .addClaims(claims)
                 .signWith(signKey, SignatureAlgorithm.HS256);
 
-        return jwtBuilder.compact();
+        return builder.compact();
     }
 
 

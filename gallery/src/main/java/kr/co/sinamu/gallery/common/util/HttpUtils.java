@@ -12,7 +12,7 @@ public class HttpUtils {
     }
 
     // 세선 값 조회
-    public static Object getSession(HttpServletRequest req, String key) {
+    public static Object getSessionValue(HttpServletRequest req, String key) {
         return req.getSession().getAttribute(key);
     }
 
@@ -22,7 +22,7 @@ public class HttpUtils {
     }
 
     // 쿠키 값 입력
-    public static void setCookieValue(HttpServletResponse res, String name, String value, int expSeconds) {
+    public static void setCookie(HttpServletResponse res, String name, String value, int expSeconds) {
 
         Cookie cookie = new Cookie(name, value);
         cookie.setHttpOnly(true);
@@ -51,7 +51,7 @@ public class HttpUtils {
 
 
     // 쿠기 삭제
-    public static void removeCookieValue(HttpServletResponse res, String name) {
+    public static void removeCookie(HttpServletResponse res, String name) {
         Cookie cookie = new Cookie(name, null);
         cookie.setPath("/");
         cookie.setMaxAge(0);
