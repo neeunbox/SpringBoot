@@ -62,6 +62,7 @@ public class AccountController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/api/account/token")
     public ResponseEntity<?> regenerate(HttpServletRequest req) {
         String accessToken = "";
         String refreshToken = HttpUtils.getCookieValue(req, AccountConstants.REFRESH_TOKEN_NAME);
@@ -71,7 +72,15 @@ public class AccountController {
             // 리프레ㅣ 토큰이 내부 값 조회
             Map<String, Object> tokenBody = TokenUtils.getBody(refreshToken);
 
+            // 리프레시 토큰의 회원 아이디 조회
+            Integer memberId = (Integer) tokenBody.get(AccountConstants.MEMBER_ID_NAME);
+
+            // 엑세스 토큰 발급
+            accessToken = TokenUtils.generate(AccountConstants.ACCESS_TOKEN_NAME, AccountConstants.MEMBER_ID_NAME, memberId, AccountConstants.ACCESS_TOKEN_EXP_MINUTES);
+
         }
+
+        return new ResponseEntity<>(accessToken, HttpStatus.OK);
     }
 
 }
